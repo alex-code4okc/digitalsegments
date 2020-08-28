@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>7 Segment Display</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+        <script src="https://unpkg.com/reactstrap@8.4.1/dist/reactstrap.min.js"></script>
+        <script type="text/babel">
+            function SegmentDisplay({ number, color, bgColor }) {
+                let segmentA = [9, 8, 7, 6, 5, 3, 2];
+                let segmentB = [9, 8, 7, 4, 3, 2, 1];
+                let segmentC = [9, 8, 7, 6, 5, 4, 3, 1];
+                let segmentD = [9, 8, 6, 5, 3, 2];
+                let segmentE = [8, 6, 2];
+                let segmentF = [9, 8, 6, 5, 4];
+                let segmentG = [9, 8, 6, 5, 4, 3, 2];
+
+                return (
+                    <div>
+                        <svg
+                            width="1000"
+                            height="2000"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            {/*segment a */}
+                            {segmentA.includes(number) && (
+                                <>
+                                    <path
+                                        d="M150,100 l 700,0"
+                                        fill={`${color}`}
+                                        stroke={`${color}`}
+                                        stroke-width="100"
+                                        stroke-linecap="butt"
+                                    ></path>
+                                    <path
+                                        d="M150,50 l-50,50 l50,50 v0,-100 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                    <path
+                                        d="M850,50 l50,50 l-50,50 v0,-100 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                </>
+                            )}
+                            {/* segment b */}
+                            {segmentB.includes(number) && (
+                                <>
+                                    <path
+                                        d="M910,160 v0,700"
+                                        fill={`${color}`}
+                                        stroke={`${color}`}
+                                        stroke-width="100"
+                                        stroke-linecap="butt"
+                                    ></path>
+                                    <path
+                                        d="M860,160 l50,-50 l50,50 h100,0 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                    <path
+                                        d="M860,860 l50,50 l50,-50 h-100,0 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                </>
+                            )}
+                            {/* segment g */}
+                            {segmentG.includes(number) && (
+                                <>
+                                    <path
+                                        d="M150,915 l 700,0"
+                                        fill={`${color}`}
+                                        stroke={`${color}`}
+                                        stroke-width="100"
+                                        stroke-linecap="butt"
+                                    ></path>
+                                    {/* segment g end points */}
+                                    <path
+                                        d="M150,865 l-50,50 l50,50 v0,-100 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                    <path
+                                        d="M850,865 l50,50 l-50,50 v0,-100 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                </>
+                            )}
+                            {/* segment c */}
+                            {segmentC.includes(number) && (
+                                <>
+                                    <path
+                                        d="M910,970 v0,700"
+                                        fill={`${color}`}
+                                        stroke={`${color}`}
+                                        stroke-width="100"
+                                        stroke-linecap="butt"
+                                    ></path>
+                                    {/* segment c endpoints */}
+                                    <path
+                                        d="M860,970 l50,-50 l50,50 h100,0 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                    <path
+                                        d="M860,1670 l50,50 l50,-50 h-100,0 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                </>
+                            )}
+                            {/* segment d */}
+                            {segmentD.includes(number) && (
+                                <>
+                                    <path
+                                        d="M150,1730 l 700,0"
+                                        fill={`${color}`}
+                                        stroke={`${color}`}
+                                        stroke-width="100"
+                                        stroke-linecap="butt"
+                                    ></path>
+                                    {/* segment d end points */}
+                                    <path
+                                        d="M150,1680 l-50,50 l50,50 v0,-100 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                    <path
+                                        d="M850,1680 l50,50 l-50,50 v0,-100 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                </>
+                            )}
+                            {/* segment e */}
+                            {segmentE.includes(number) && (
+                                <>
+                                    <path
+                                        d="M90,970 v0,700"
+                                        fill={`${color}`}
+                                        stroke={`${color}`}
+                                        stroke-width="100"
+                                        stroke-linecap="butt"
+                                    ></path>
+                                    {/* segment e endpoints */}
+                                    <path
+                                        d="M40,970 l50,-50 l50,50 h100,0 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                    <path
+                                        d="M40,1670 l50,50 l50,-50 h-100,0 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                </>
+                            )}
+                            {/* segment f */}
+                            {segmentF.includes(number) && (
+                                <>
+                                    <path
+                                        d="M90,160 v0,700"
+                                        fill={`${color}`}
+                                        stroke={`${color}`}
+                                        stroke-width="100"
+                                        stroke-linecap="butt"
+                                    ></path>
+                                    {/* segment f endpoints */}
+                                    <path
+                                        d="M40,160 l50,-50 l50,50 h100,0 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                    <path
+                                        d="M40,860 l50,50 l50,-50 h-100,0 z"
+                                        fill={`${color}`}
+                                    ></path>
+                                </>
+                            )}
+                        </svg>
+                    </div>
+                );
+            }
+            function App() {
+                const styleObj = {
+                    display: "flex",
+                };
+                return (
+                    <div style={styleObj}>
+                        <SegmentDisplay
+                            number={9}
+                            color={"red"}
+                            bgColor={"grey"}
+                        />
+                        <SegmentDisplay
+                            number={8}
+                            color={"orange"}
+                            bgColor={"grey"}
+                        />
+                        <SegmentDisplay
+                            number={7}
+                            color={"yellow"}
+                            bgColor={"grey"}
+                        />
+                        <SegmentDisplay
+                            number={6}
+                            color={"green"}
+                            bgColor={"grey"}
+                        />
+                        <SegmentDisplay
+                            number={5}
+                            color={"blue"}
+                            bgColor={"grey"}
+                        />
+                        <SegmentDisplay
+                            number={4}
+                            color={"violet"}
+                            bgColor={"grey"}
+                        />
+                        <SegmentDisplay
+                            number={3}
+                            color={"grey"}
+                            bgColor={"grey"}
+                        />
+                        <SegmentDisplay
+                            number={2}
+                            color={"steelblue"}
+                            bgColor={"grey"}
+                        />
+                        <SegmentDisplay
+                            number={1}
+                            color={"blanchedalmond"}
+                            bgColor={"grey"}
+                        />
+                    </div>
+                );
+            }
+            const rootElement = document.getElementById("root");
+            const app = <App />;
+            ReactDOM.render(app, rootElement);
+        </script>
+    </body>
+</html>
