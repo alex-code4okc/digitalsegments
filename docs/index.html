@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>7 Segment Display</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+        <script src="https://unpkg.com/reactstrap@8.4.1/dist/reactstrap.min.js"></script>
+        <script type="text/babel">
+            const { useState, useEffect } = React;
+            function SevenSegmentDisplay({
+                number,
+                color,
+                bgColor,
+                width,
+                height,
+                opacity,
+            }) {
+                let segmentA = [9, 8, 7, 6, 5, 3, 2, 0, "AM", "PM"];
+                let segmentB = [9, 8, 7, 4, 3, 2, 1, 0, "AM", "PM"];
+                let segmentC = [9, 8, 7, 6, 5, 4, 3, 1, 0, "AM"];
+                let segmentD = [9, 8, 6, 5, 3, 2, 0];
+                let segmentE = [8, 6, 2, 0, "AM", "PM"];
+                let segmentF = [9, 8, 6, 5, 4, 0, "AM", "PM"];
+                let segmentG = [9, 8, 6, 5, 4, 3, 2, "AM", "PM"];
+
+                let showSegmentA = segmentA.includes(number);
+                let showSegmentB = segmentB.includes(number);
+                let showSegmentC = segmentC.includes(number);
+                let showSegmentD = segmentD.includes(number);
+                let showSegmentE = segmentE.includes(number);
+                let showSegmentF = segmentF.includes(number);
+                let showSegmentG = segmentG.includes(number);
+
+                let styleObj = {
+                    backgroundColor: `${bgColor}`,
+                };
+                return (
+                    <div>
+                        <svg
+                            width={width}
+                            height={height}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0,0,1000,2000"
+                            style={styleObj}
+                        >
+                            {/*segment a */}
+                            {/*segmentA.includes(number) && ( */}
+                            <>
+                                <path
+                                    d="M150,100 l 700,0"
+                                    fill={`${color}`}
+                                    stroke={`${color}`}
+                                    strokeWidth="100"
+                                    strokeLinecap="butt"
+                                    fillOpacity={
+                                        showSegmentA ? "1" : `${opacity}`
+                                    }
+                                    strokeOpacity={
+                                        showSegmentA ? "1" : `${opacity}`
+                                    }
+                                ></path>
+                                <path
+                                    d="M150,50 l-50,50 l50,50 v0,-100 z"
+                                    fill={`${color}`}
+                                    fillOpacity={
+                                        showSegmentA ? "1" : `${opacity}`
+                                    }
+                                    strokeOpacity={
+                                        showSegmentA ? "1" : `${opacity}`
+                                    }
+                                ></path>
+                                <path
+                                    d="M850,50 l50,50 l-50,50 v0,-100 z"
+                                    fill={`${color}`}
+                                    fillOpacity={
+                                        showSegmentA ? "1" : `${opacity}`
+                                    }
+                                    strokeOpacity={
+                                        showSegmentA ? "1" : `${opacity}`
+                                    }
+                                ></path>
+                            </>
+                            {/* )} */}
+                            {/* segment b */}
+
+                            <path
+                                d="M910,160 v0,700"
+                                fill={`${color}`}
+                                stroke={`${color}`}
+                                strokeWidth="100"
+                                strokeLinecap="butt"
+                                fillOpacity={showSegmentB ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentB ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            <path
+                                d="M860,160 l50,-50 l50,50 h100,0 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentB ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentB ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            <path
+                                d="M860,860 l50,50 l50,-50 h-100,0 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentB ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentB ? "1" : `${opacity}`
+                                }
+                            ></path>
+
+                            {/* segment g */}
+
+                            <path
+                                d="M150,915 l 700,0"
+                                fill={`${color}`}
+                                stroke={`${color}`}
+                                strokeWidth="100"
+                                strokeLinecap="butt"
+                                fillOpacity={showSegmentG ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentG ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            {/* segment g end points */}
+                            <path
+                                d="M150,865 l-50,50 l50,50 v0,-100 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentG ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentG ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            <path
+                                d="M850,865 l50,50 l-50,50 v0,-100 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentG ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentG ? "1" : `${opacity}`
+                                }
+                            ></path>
+
+                            {/* segment c */}
+
+                            <path
+                                d="M910,970 v0,700"
+                                fill={`${color}`}
+                                stroke={`${color}`}
+                                strokeWidth="100"
+                                strokeLinecap="butt"
+                                fillOpacity={showSegmentC ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentC ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            {/* segment c endpoints */}
+                            <path
+                                d="M860,970 l50,-50 l50,50 h100,0 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentC ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentC ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            <path
+                                d="M860,1670 l50,50 l50,-50 h-100,0 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentC ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentC ? "1" : `${opacity}`
+                                }
+                            ></path>
+
+                            {/* segment d */}
+
+                            <path
+                                d="M150,1730 l 700,0"
+                                fill={`${color}`}
+                                stroke={`${color}`}
+                                strokeWidth="100"
+                                strokeLinecap="butt"
+                                fillOpacity={showSegmentD ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentD ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            {/* segment d end points */}
+                            <path
+                                d="M150,1680 l-50,50 l50,50 v0,-100 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentD ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentD ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            <path
+                                d="M850,1680 l50,50 l-50,50 v0,-100 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentD ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentD ? "1" : `${opacity}`
+                                }
+                            ></path>
+
+                            {/* segment e */}
+
+                            <path
+                                d="M90,970 v0,700"
+                                fill={`${color}`}
+                                stroke={`${color}`}
+                                strokeWidth="100"
+                                strokeLinecap="butt"
+                                fillOpacity={showSegmentE ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentE ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            {/* segment e endpoints */}
+                            <path
+                                d="M40,970 l50,-50 l50,50 h100,0 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentE ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentE ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            <path
+                                d="M40,1670 l50,50 l50,-50 h-100,0 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentE ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentE ? "1" : `${opacity}`
+                                }
+                            ></path>
+
+                            {/* segment f */}
+
+                            <path
+                                d="M90,160 v0,700"
+                                fill={`${color}`}
+                                stroke={`${color}`}
+                                strokeWidth="100"
+                                strokeLinecap="butt"
+                                fillOpacity={showSegmentF ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentF ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            {/* segment f endpoints */}
+                            <path
+                                d="M40,160 l50,-50 l50,50 h100,0 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentF ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentF ? "1" : `${opacity}`
+                                }
+                            ></path>
+                            <path
+                                d="M40,860 l50,50 l50,-50 h-100,0 z"
+                                fill={`${color}`}
+                                fillOpacity={showSegmentF ? "1" : `${opacity}`}
+                                strokeOpacity={
+                                    showSegmentF ? "1" : `${opacity}`
+                                }
+                            ></path>
+                        </svg>
+                    </div>
+                );
+            }
+            SevenSegmentDisplay.defaultProps = {
+                color: "red",
+                bgColor: "black",
+                width: "100",
+                height: "200",
+                opacity: ".3",
+            };
+
+            function DigitalTimer() {
+                const [firstHourDigit, setFirstHourDigit] = useState(0);
+                const [secondHourDigit, setSecondHourDigit] = useState(0);
+                const [firstMinuteDigit, setFirstMinuteDigit] = useState(0);
+                const [secondMinuteDigit, setSecondMinuteDigit] = useState(0);
+                const [firstSecondDigit, setFirstSecondDigit] = useState(0);
+                const [secondSecondDigit, setSecondSecondDigit] = useState(0);
+                const [AMPM, setAMPM] = useState("");
+
+                const singleDigitHoursMinutesSeconds = [
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                ];
+
+                useEffect(() => {
+                    const interval = setInterval(() => {
+                        const currentLocaleTime = new Date().toLocaleTimeString();
+                        // "7:45:39 AM" or "12:43:15 PM"
+                        const splitByTimeOfDay = currentLocaleTime.split(" ");
+                        const splitByHourMinuteSecond = splitByTimeOfDay[0].split(
+                            ":"
+                        );
+                        const ampm = splitByTimeOfDay[1];
+                        const hours = splitByHourMinuteSecond[0];
+                        const minutes = splitByHourMinuteSecond[1];
+                        const seconds = splitByHourMinuteSecond[2];
+
+                        setAMPM(ampm); // "AM" or "PM"
+                        //setting hours
+                        if (singleDigitHoursMinutesSeconds.includes(hours)) {
+                            setFirstHourDigit("Off");
+                            const hour = parseInt(hours, 10);
+                            setSecondHourDigit(hour);
+                        } else {
+                            let fHour = parseInt(hours[0], 10);
+                            let sHour = parseInt(hours[1], 10);
+                            setFirstHourDigit(fHour);
+                            setSecondHourDigit(sHour);
+                        }
+                        //setting minutes
+                        let fMinute = parseInt(minutes[0], 10);
+                        let sMinute = parseInt(minutes[1], 10);
+                        setFirstMinuteDigit(fMinute);
+                        setSecondMinuteDigit(sMinute);
+
+                        //setting seconds
+                        let fSeconds = parseInt(seconds[0], 10);
+                        let sSeconds = parseInt(seconds[1], 10);
+                        setFirstSecondDigit(fSeconds);
+                        setSecondSecondDigit(sSeconds);
+                    }, 1000);
+                    return () => clearInterval(interval);
+                });
+                return (
+                    <>
+                        //hours
+                        <SevenSegmentDisplay number={firstHourDigit} />
+                        <SevenSegmentDisplay number={secondHourDigit} />
+                        //minutes
+                        <SevenSegmentDisplay number={firstMinuteDigit} />
+                        <SevenSegmentDisplay number={secondMinuteDigit} />
+                        //seconds
+                        <SevenSegmentDisplay number={firstSecondDigit} />
+                        <SevenSegmentDisplay number={secondSecondDigit} />
+                        //AM/PM
+                        <SevenSegmentDisplay number={AMPM} />
+                    </>
+                );
+            }
+
+            function App() {
+                const styleObj = {
+                    display: "flex",
+                };
+
+                let settingsObj = { color: "blue", bgColor: "black" };
+                let numbers = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+                return (
+                    <>
+                        <div style={styleObj}>
+                            <DigitalTimer />
+                        </div>
+                    </>
+                );
+            }
+            const rootElement = document.getElementById("root");
+            const app = <App />;
+            ReactDOM.render(app, rootElement);
+        </script>
+    </body>
+</html>
